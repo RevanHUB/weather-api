@@ -6,6 +6,7 @@ header {
     /* background:red; */
     padding:10px;
     font-family:var(--mainf);
+    max-width:360px;
 }
 header button {
     border:0px;
@@ -20,9 +21,7 @@ header button.selected {
     text-transform:uppercase;
     font-weight:400;
 }
-header button {
 
-}
 header button span {
     font-size:1.5rem !important;
 }

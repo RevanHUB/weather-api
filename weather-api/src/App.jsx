@@ -118,10 +118,12 @@ class App extends React.Component {
                   // los coloco todos dentro porque quiero que sea real time
                   // además la navegación quiero hacerla por contact y arrastrar y aumentar el width
                   // del contenedor, estilo mobile-first
-                  <section>
+                  <section id="scrollSurface">
+                   
                     <Home 
                       info = {this.state}
                     />
+                     <Previous />
                   </section>
                 }></Route>
             </Routes>

@@ -5,7 +5,7 @@ import Details from './components/details/details';
 import Current from '../current/current';
 export const Home = (props) => {
     return(
-        <section className='home'>
+        <section id="home" className='home'>
             <p className="time">{props.info.currentTimeSelected}</p>
                 <Icon currentTime = {props.info.currentTimeSelected}/>
                 <Details 
