@@ -1,0 +1,28 @@
+header {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background:red; */
+    padding:10px;
+    font-family:var(--mainf);
+}
+header button {
+    border:0px;
+    /* background:gray; */
+    padding:5px;
+    border-radius:0;
+}
+header button.selected {
+    color:black;
+    font-size:1.5rem;
+    letter-spacing:.1rem;
+    text-transform:uppercase;
+    font-weight:400;
+}
+header button {
+
+}
+header button span {
+    font-size:1.5rem !important;
+}

@@ -1,0 +1,69 @@
+.home .details {
+    margin:10px 0px 0px 0px;
+    /* background:red; */
+    width:100%;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.home .details nav {
+    width:50%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+    /* background:blue; */
+    
+}
+.home h1 {
+    font-weight:normal;
+    
+}
+.home .minMax {
+    /* background:gray; */
+    display:flex;
+    font-family:var(--alternativef);
+    font-size:.9rem;
+    font-weight:600;
+}
+.home .minMax span{
+    /* background:gray; */
+    display:flex;
+    align-items:center;
+    font-size:1.8rem;
+    font-weight:600;
+}
+.home .details nav:nth-of-type(2n) h5 {
+    /* background:gray; */
+    font-size:1rem;
+    font-family:var(--seriff);
+    width:fit-content;
+    padding:0px;
+    letter-spacing:.04rem;
+    text-transform: uppercase;
+    font-weight:500;
+    text-align:left;
+    border-bottom:1px solid var(--sombraBorde);
+}
+.home .details nav:nth-of-type(2n) {
+    align-items:flex-start;
+}
+
+.home .details nav:nth-of-type(2n) p {
+    font-size:.77rem;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-top:-5px;
+     font-family:var(--alternativef);
+}
+.home .details nav:nth-of-type(2n) p:first-of-type {
+    margin-top:0px;
+}
+.home .details nav:nth-of-type(2n) p b {
+    font-weight:normal;
+    text-transform:none;
+    font-weight:500;
+}

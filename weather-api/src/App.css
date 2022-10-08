@@ -1,0 +1,29 @@
+:root {
+  --mainf: 'Montserrat', -apple-system ,sans-serif;
+  --alternativef: 'Inter Tight', -apple-system, sans-serif;
+  --seriff: 'Libre Baskerville', -apple-system, serif;
+  --sombraBorde: #D8D8D8;
+}
+
+* {
+  padding:0;
+  box-sizing:border-box;
+  margin:0;
+}
+ body {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+
+ }
+#root {
+    max-width: 360px;
+    max-height: 740px;
+    text-align: center;
+    background:#FBFBFB;
+    overflow-x:hidden;
+    width:100vw;
+    height:100vh;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
