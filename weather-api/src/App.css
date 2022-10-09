@@ -3,12 +3,12 @@
   box-sizing:border-box;
   margin:0;
   user-select:none;
+  outline:none;
+}
+*::-webkit-scrollbar {
+  display:none;
 }
 
-@keyframes scrollingLeft {
-  0% { margin-left: 0px};
-  100% { margin-left: -360px; }
-}
 :root {
   --mainf: 'Montserrat', -apple-system ,sans-serif;
   --alternativef: 'Inter Tight', -apple-system, sans-serif;
@@ -16,13 +16,6 @@
   --sombraBorde: #D8D8D8;
 }
 
-
- body {
-  display:flex;
-  align-items:center;
-  justify-content: center;
-
- }
 #root {
     max-width: 360px;
     max-height: 740px;
@@ -36,11 +29,20 @@
     overflow-y:hidden;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
-.App {
-    /* position:relative; */
+
+body {
+  display:flex;
+  align-items:center;
+  justify-content: center;
 }
+
+.App {
+  position:relative;
+  overflow:hidden;
+}
+
 #scrollSurface {
-  /* background:red; */
   overflow-x:scroll;
   display:flex;
+  min-width:360px;
 }

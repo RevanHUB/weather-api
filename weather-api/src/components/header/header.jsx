@@ -6,18 +6,18 @@ export const Header = (props) => {
         <header>
             <button  onClick={() => {
                 console.log("show settings");
-                
+                Config.showAndhide('previous', 'home', 'search');
             }}>
                 <span className='material-icons'>
                     menu
                 </span>
             </button>
             <button   className="selected" onClick={() => {
-                Config.showAndhide('home', 'previous');
+                Config.showAndhide('home', 'previous', 'search');
             }}>{props.city}</button>
             
             <button onClick={() => {
-                Config.showAndhide('previous', 'home');
+                 Config.showAndhide('search', 'previous', 'home');
             }}>
                 <span className="material-icons">
                     add

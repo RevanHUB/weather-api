@@ -3,7 +3,14 @@ import './home.css'
 import Icon from './components/icon/icon';
 import Details from './components/details/details';
 import Current from '../current/current';
+import { useEffect } from 'react';
 export const Home = (props) => {
+    useEffect(() => {
+        setTimeout(() => {
+             props.request();
+        }, [])
+        
+    }, [])
     return(
         <section id="home" className='home'>
             <p className="time">{props.info.currentTimeSelected}</p>

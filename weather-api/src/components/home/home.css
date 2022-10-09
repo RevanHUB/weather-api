@@ -1,6 +1,7 @@
 * {
     font-family:var(--mainf);
 }
+
 .home {
     min-height:680px;
     max-height:650px;
@@ -11,7 +12,7 @@
     align-items: center;
     justify-content:flex-start;
     overflow:hidden;
-    
+    animation: scrollingTop .6s;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     transition: all 1s ease;
@@ -26,7 +27,6 @@
     padding:20px 0px 0px 0px;
 }
 .home i {
-    /* background:gray; */
     margin:20px 0px 0px 0px;
 }
 .home i span {

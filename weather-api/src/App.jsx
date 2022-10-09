@@ -1,28 +1,26 @@
-import React, { useState } from 'react'
+import './App.css'
+import './animations.css';
+import React from 'react'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
+
 import axios from 'axios'
-
-
-
-import './App.css'
 import Config from './config.js'
 import Header from './components/header/header'
 import Previous from './components/previous/previous';
 import Home from './components/home/home';
-import { useEffect } from 'react';
+import Search from './components/search/search';
+
 
 
 class App extends React.Component {
   constructor() {
     super();
-    this.options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    this.date = new Date();
-    this.dateformat = new Date().toLocaleDateString("es-ES", this.options);
-    this.hour = this.date.getHours();
+    this.hour = Config.date.getHours();
+    this.HandlerSend = true;
     this.getHour = (hour) => {
       let schedule;
       if (hour >= 0 && hour <= 6) {
@@ -61,16 +59,37 @@ class App extends React.Component {
        if (weekday === 6 ) {
         weekday = 'Saturday'; 
        }
-       if (weekday === 7 ) {
+       if (weekday === 0 ) {
         weekday = 'Sunday'; 
        }
       return weekday;
-    }
-    this.callWeatherApi = (city) => {
-      axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + Config.api_key).then (res => {
-      console.log(res.data);
-    })
-  }
+    },
+    this.getData = async () => {
+      if (this.HandlerSend === true) {
+        null
+      } else {
+          await axios.request(Config.weather_options('Santa Cruz de La Palma')).then(function (response) {
+            console.log(response.data);
+            console.log(response.data.current_observation.atmosphere.humidity)
+            /*this.setState({
+                citySelected: response.data.location.city,
+                currentTimeSelected: response.data.current_observation.condition.text,
+                temperatureSelected: response.data.current_observation.condition.temperature,
+                temperatureMinimumSelected: response.data.forecasts[0].low,
+                temperatureMaximumSelected: response.data.forecasts[0].high,
+                sensationSelected:  response.data.current_observation.wind.chill,
+                humiditySelected: response.data.current_observation.atmosphere.humidity,
+                windSelected: response.data.current_observation.wind.speed,
+                visibility: response.data.current_observation.atmosphere.visibility
+            })*/
+       
+          }).catch(function (error) {
+            console.error(error);
+        })
+        //this.HandlerSend = true;
+        console.log(this.HandlerSend);
+      }
+    },
     this.state = {
       citySelected : 'London',
       currentTimeSelected : 'sunny',
@@ -81,32 +100,29 @@ class App extends React.Component {
       humiditySelected: 33,
       windSelected: 20.9,
       visibility: 5,
-      today: this.ToWeekday(this.date.getDay()),
-      scheduleNow: this.getHour(this.date.getHours()),
+      today: this.ToWeekday(Config.date.getDay()),
+      scheduleNow: this.getHour(Config.date.getHours()),
       schedules: [
         'Morning',
         'Afternoon', 
         'Evening',
         'Night'
       ],
-      previousSearchs : [
+      previously : [
         {
           city: 'Manchester',
+          weather: 'windy',
           temperature: 20,
-        
         }
       ]
     }
-    
-
   }
   render() {
-    //console.log(Config.api_key);
-    
-    //this.callWeatherApi('london');
-    // console.log(this.dateformat);
-    
-    
+    // insert ES6 code here
+    this.HandlerSend = false;
+    //this.getData();
+   
+
     return(
       <section className="App">
           <Header  
@@ -115,19 +131,17 @@ class App extends React.Component {
           <Router>
             <Routes>
                  <Route exact path="/" element={
-                  // los coloco todos dentro porque quiero que sea real time
-                  // además la navegación quiero hacerla por contact y arrastrar y aumentar el width
-                  // del contenedor, estilo mobile-first
                   <section id="scrollSurface">
-                   
                     <Home 
                       info = {this.state}
+                      request = {this.getData}
                     />
-                     <Previous />
+                     <Previous info = {this.state} />
                   </section>
                 }></Route>
             </Routes>
           </Router>
+          <Search />
       </section>
     )
   }
