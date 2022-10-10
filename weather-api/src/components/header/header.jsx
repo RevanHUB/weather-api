@@ -7,6 +7,7 @@ export const Header = (props) => {
             <button  onClick={() => {
                 console.log("show settings");
                 Config.showAndhide('previous', 'home', 'search');
+                
             }}>
                 <span className='material-icons'>
                     menu

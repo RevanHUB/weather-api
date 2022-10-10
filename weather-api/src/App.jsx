@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import axios from 'axios'
+
 import Config from './config.js'
 import Header from './components/header/header'
 import Previous from './components/previous/previous';
@@ -64,35 +64,10 @@ class App extends React.Component {
        }
       return weekday;
     },
-    this.getData = async () => {
-      if (this.HandlerSend === true) {
-        null
-      } else {
-          await axios.request(Config.weather_options('Santa Cruz de La Palma')).then(function (response) {
-            console.log(response.data);
-            console.log(response.data.current_observation.atmosphere.humidity)
-            /*this.setState({
-                citySelected: response.data.location.city,
-                currentTimeSelected: response.data.current_observation.condition.text,
-                temperatureSelected: response.data.current_observation.condition.temperature,
-                temperatureMinimumSelected: response.data.forecasts[0].low,
-                temperatureMaximumSelected: response.data.forecasts[0].high,
-                sensationSelected:  response.data.current_observation.wind.chill,
-                humiditySelected: response.data.current_observation.atmosphere.humidity,
-                windSelected: response.data.current_observation.wind.speed,
-                visibility: response.data.current_observation.atmosphere.visibility
-            })*/
-       
-          }).catch(function (error) {
-            console.error(error);
-        })
-        //this.HandlerSend = true;
-        console.log(this.HandlerSend);
-      }
-    },
+    
     this.state = {
       citySelected : 'London',
-      currentTimeSelected : 'sunny',
+      currentTimeSelected : 'Sunny',
       temperatureSelected: 20,
       temperatureMinimumSelected:20,
       temperatureMaximumSelected: 22,
@@ -109,23 +84,37 @@ class App extends React.Component {
         'Night'
       ],
       previously : [
-        {
-          city: 'Manchester',
-          weather: 'windy',
-          temperature: 20,
-        }
+ 
       ]
     }
+    this.changeState = (city, time, temperature, lowtemp, hightemp, sensation, humidity, wind, visibility) => {
+      this.setState({
+        citySelected: city,
+        currentTimeSelected: time,
+        temperatureSelected: temperature,
+        temperatureMinimumSelected: lowtemp,
+        temperatureMaximumSelected: hightemp,
+        sensationSelected:  sensation,
+        humiditySelected: humidity,
+        windSelected: wind,
+        visibility: visibility
+    })
+    }
+    
+    
+    
   }
   render() {
     // insert ES6 code here
     this.HandlerSend = false;
+    
     //this.getData();
    
 
     return(
       <section className="App">
           <Header  
+              info = { this.state }
               city = {this.state.citySelected} 
           />
           <Router>
@@ -134,14 +123,17 @@ class App extends React.Component {
                   <section id="scrollSurface">
                     <Home 
                       info = {this.state}
-                      request = {this.getData}
+                      changeState = {this.changeState}
                     />
                      <Previous info = {this.state} />
                   </section>
                 }></Route>
             </Routes>
           </Router>
-          <Search />
+          <Search 
+            addToFavorite = {Config.addToFavorite}
+            info = {this.state}
+          />
       </section>
     )
   }
