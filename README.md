@@ -14,6 +14,10 @@
 
 ``` http://localhost:5173 ```
 
+## Documentation: 
+
+[DERS_WEATHER.pdf](https://github.com/RevanHUB/weather-api/files/9759425/DERS_WEATHER.pdf)
+
 Not finished!
 
 
