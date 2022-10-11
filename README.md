@@ -4,7 +4,7 @@
 ![image](https://user-images.githubusercontent.com/84904766/194727382-54ee4d5a-d05e-45a5-a770-e24e51882177.png)
 
 
-## How to use: 
+## How to use
 
 ``` git clone https://github.com/RevanHUB/weather-api/ ```
 
@@ -14,7 +14,7 @@
 
 ``` http://localhost:5173 ```
 
-## Documentation: 
+## Documentation
 
 [DERS_WEATHER.pdf](https://github.com/RevanHUB/weather-api/files/9759425/DERS_WEATHER.pdf)
 
