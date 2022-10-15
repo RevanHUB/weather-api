@@ -23,4 +23,5 @@
 
 Currently there is some facts to be polished of user experience to be changed!
 
+Thanks for view!
 
