@@ -1,7 +1,8 @@
 # weather-api
 
-![image](https://user-images.githubusercontent.com/84904766/194710833-e74fe1d8-f203-4c93-81c0-1e4bd47ac64e.png)
-![image](https://user-images.githubusercontent.com/84904766/194727382-54ee4d5a-d05e-45a5-a770-e24e51882177.png)
+![weatherapp](https://user-images.githubusercontent.com/84904766/195995522-dd1c349a-931e-466c-8ac3-1b54a2aaaac0.gif)
+
+
 
 
 ## How to use
@@ -14,10 +15,13 @@
 
 ``` http://localhost:5173 ```
 
-## Documentation
+## Documentation : 📝
 
 [DERS_WEATHER.pdf](https://github.com/RevanHUB/weather-api/files/9759425/DERS_WEATHER.pdf)
 
-Not finished!
+### Development 🧑‍💻 
 
+Currently there is some facts to be polished of user experience to be changed!
+
+Thanks for view!
 
