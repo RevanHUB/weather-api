@@ -9,9 +9,7 @@ export const Header = (props) => {
         <header>
             <PreviousHandler />
             <HomeHandler city = {props.city} />
-            
             <SearchHandler />
-            
         </header>
     )
 };
