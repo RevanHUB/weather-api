@@ -20,6 +20,11 @@ header button.selected {
     letter-spacing:.1rem;
     text-transform:uppercase;
     font-weight:400;
+    /* background:red; */
+    max-width:200px;
+    max-height:40px;
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 
 header button span {

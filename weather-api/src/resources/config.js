@@ -38,7 +38,53 @@ export const Config = {
     },
     getFavorites() {
       return localStorage.getItem('favorites');
-    }
+    },
+    getHour(hour) {
+        let schedule;
+        if (hour >= 0 && hour <= 6) {
+          schedule = 'Night'; 
+        }
+        if (hour >= 7 && hour <= 13) {
+          schedule = 'Morning';
+        }
+        if (hour >= 13 && hour <= 17) {
+          schedule = 'Afternoon'; 
+        }
+        if (hour >= 18 && hour <= 20) {
+          schedule = 'Evening';
+        }
+        if (hour >= 21 && hour <= 23 ) {
+          schedule = 'Night';
+        }
+        return schedule;
+      },
+      
+    ToWeekday(weekday) {
+      if (weekday === 1 ) {
+        weekday = 'Monday'; 
+       }
+       if (weekday === 2 ) {
+        weekday = 'Tuesday'; 
+       }
+       if (weekday === 3 ) {
+        weekday = 'Wednesday'; 
+       }
+       if (weekday === 4) {
+        weekday = 'Thursday'; 
+       }
+       if (weekday === 5 ) {
+        weekday = 'Friday'; 
+       }
+       if (weekday === 6 ) {
+        weekday = 'Saturday'; 
+       }
+       if (weekday === 0 ) {
+        weekday = 'Sunday'; 
+       }
+      return weekday;
+    },
+
+    
       
     
     

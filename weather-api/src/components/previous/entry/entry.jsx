@@ -1,30 +1,49 @@
-//import './entry.css'
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
+import Config from '../../../resources/config';
+import Square from './gridsquare/square';
 
 export const Entry = (props) => {
-    //console.log(props.entries);
+
     let counter = 0;
+    const [entry, setEntry] = useState('');
+
+    useEffect(() => {
+        let refresh = setInterval(() => {
+            setEntry(JSON.parse(localStorage.getItem('favs')));
+        }, 1000);
+        return () => clearInterval(refresh);
+    }, [entry] );
+    
     return (
         <section id="previous">
             <div className='grid'>
                 {
-                    props.entries.map((element) => {
+                   Array.from(entry).map((element) => {
                         counter++; 
-                        return <button key={counter} className='city'>
-                        <div>
-                            <p>{element.city}</p>
-                            <i>
-                                { (element.weather === 'sunny') ? <span  className="material-icons" data-time="sunny">circle</span>: null }
-                                {( element.weather === 'snow')?<span className="material-icons" data-time="snow">ac_unit</span> : null}
-                                {( element.weather === 'cloudy')?<span className="material-icons" data-time="cloudy">cloudy</span> : null}
-                                {( element.weather === 'foggy')?<span className="material-icons" data-time="foggy">foggy</span> : null}
-                                {( element.weather === 'rainy')?<span className="material-icons" data-time="rainy">water_drop</span> : null}
-                                {( element.weather === 'windy')?<span className="material-icons" data-time="windy">air</span> : null}
-                                {( element.weather === 'stormy')?<span className="material-icons" data-time="stormy">thunderstorm</span> : null}
-                            </i>
-                            <p>{element.temperature}</p>
-                        </div>
-                    </button> })
+                        return <button key={counter} className='city' onClick={ () => {
+                            props.changeState(
+                                element.city, 
+                                element.weather, 
+                                element.temperature, 
+                                element.temperatureMinimum,
+                                element.temperatureMaximum, 
+                                element.sensation, 
+                                element.humidity, 
+                                element.wind, 
+                                element.visibility 
+                            ); 
+
+                            Config.showAndhide('home', 'previous', 'search');
+                            
+                        }}>
+                       <Square 
+                            city = {element.city}
+                            weather = {element.weather}
+                            temperature = {element.temperature}
+                        />
+                    </button> 
+                    })
                 }
             </div>
         </section>

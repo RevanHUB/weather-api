@@ -1,22 +1,22 @@
-i span[data-time=cloudy] {
+.home i span[data-time=cloudy] {
     padding-left:50%;
     color:#5a77cd;
 }
-i span[data-time=sunny] {
+.home i span[data-time=sunny] {
     color:#FFDE17;
 }
-i span[data-time=windy] {
+.home i span[data-time=windy] {
     color:#5a77cd;
 }
-i span[data-time=cloudy] {
+.home i span[data-time=cloudy] {
     color:#5a77cd;
 }
-i span[data-time=foggy] {
+.home i span[data-time=foggy] {
     color:#3d5fc3;
 }
-i span[data-time=stormy] {
+.home i span[data-time=stormy] {
     color:#FFDE17;
 }
-i span[data-time=snow] {
+.home i span[data-time=snow] {
     color:#fff;
 }

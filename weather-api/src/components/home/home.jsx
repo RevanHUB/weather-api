@@ -1,15 +1,15 @@
 import './home.css'
 import axios from 'axios'
-import Config from './../../config'
+import { useEffect } from 'react';
+
+import Config from './../../resources/config'
 import Icon from './components/icon/icon';
 import Details from './components/details/details';
 import Current from '../current/current';
-import { useEffect } from 'react';
+
 export const Home = (props) => {
     const getData = async () => {
-        await axios.request(Config.weather_options('london')).then(function (response) {
-           // console.log(response.data);
-            //console.log(response.data.city);
+        await axios.request(Config.weather_options('Santa Cruz de La Palma')).then(function (response) {
             props.changeState(
                 response.data.city,
                 response.data.weather,
@@ -24,8 +24,6 @@ export const Home = (props) => {
             }).catch(function (error) {
               console.error(error);
           })
-          //console.log(props.HandlerSend);
-        
       }
     useEffect(() => {
         setTimeout(() => {

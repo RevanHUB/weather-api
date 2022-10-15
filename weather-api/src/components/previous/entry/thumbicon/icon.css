@@ -1,0 +1,23 @@
+#previous  i span[data-time=cloudy] {
+    padding-left:25%;
+    color:#5a77cd !important;
+}
+
+.grid i span[data-time=sunny] {
+    color:#FFDE17;
+}
+.grid i span[data-time=windy] {
+    color:#5a77cd;
+}
+.grid i span[data-time=cloudy] {
+    color:#5a77cd;
+}
+.grid i span[data-time=foggy] {
+    color:#3d5fc3;
+}
+.grid i span[data-time=stormy] {
+    color:#FFDE17;
+}
+.grid i span[data-time=snow] {
+    color:#fff;
+}

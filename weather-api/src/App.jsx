@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 
-import Config from './config.js'
+import Config from './resources/config.js'
 import Header from './components/header/header'
 import Previous from './components/previous/previous';
 import Home from './components/home/home';
@@ -21,50 +21,6 @@ class App extends React.Component {
     super();
     this.hour = Config.date.getHours();
     this.HandlerSend = true;
-    this.getHour = (hour) => {
-      let schedule;
-      if (hour >= 0 && hour <= 6) {
-        schedule = 'Night'; 
-      }
-      if (hour >= 7 && hour <= 13) {
-        schedule = 'Morning';
-      }
-      if (hour >= 13 && hour <= 17) {
-        schedule = 'Afternoon'; 
-      }
-      if (hour >= 18 && hour <= 20) {
-        schedule = 'Evening';
-      }
-      if (hour >= 21 && hour <= 23 ) {
-        schedule = 'Night';
-      }
-      return schedule;
-    };
-    this.ToWeekday = (weekday) => {
-      if (weekday === 1 ) {
-        weekday = 'Monday'; 
-       }
-       if (weekday === 2 ) {
-        weekday = 'Tuesday'; 
-       }
-       if (weekday === 3 ) {
-        weekday = 'Wednesday'; 
-       }
-       if (weekday === 4) {
-        weekday = 'Thursday'; 
-       }
-       if (weekday === 5 ) {
-        weekday = 'Friday'; 
-       }
-       if (weekday === 6 ) {
-        weekday = 'Saturday'; 
-       }
-       if (weekday === 0 ) {
-        weekday = 'Sunday'; 
-       }
-      return weekday;
-    },
-    
     this.state = {
       citySelected : 'London',
       currentTimeSelected : 'Sunny',
@@ -75,17 +31,15 @@ class App extends React.Component {
       humiditySelected: 33,
       windSelected: 20.9,
       visibility: 5,
-      today: this.ToWeekday(Config.date.getDay()),
-      scheduleNow: this.getHour(Config.date.getHours()),
+      today: Config.ToWeekday(Config.date.getDay()),
+      scheduleNow: Config.getHour(Config.date.getHours()),
       schedules: [
         'Morning',
         'Afternoon', 
         'Evening',
         'Night'
       ],
-      previously : [
- 
-      ]
+      refresh: true,
     }
     this.changeState = (city, time, temperature, lowtemp, hightemp, sensation, humidity, wind, visibility) => {
       this.setState({
@@ -99,23 +53,15 @@ class App extends React.Component {
         windSelected: wind,
         visibility: visibility
     })
-    }
-    
-    
-    
+    };
   }
   render() {
-    // insert ES6 code here
     this.HandlerSend = false;
-    
-    //this.getData();
-   
-
     return(
       <section className="App">
           <Header  
               info = { this.state }
-              city = {this.state.citySelected} 
+              city = { this.state.citySelected } 
           />
           <Router>
             <Routes>
@@ -125,7 +71,11 @@ class App extends React.Component {
                       info = {this.state}
                       changeState = {this.changeState}
                     />
-                     <Previous info = {this.state} />
+                     <Previous 
+                      info = {this.state} 
+                      changeState = {this.changeState}
+                      callRefresh = {this.callRefresh}
+                     />
                   </section>
                 }></Route>
             </Routes>
@@ -133,6 +83,8 @@ class App extends React.Component {
           <Search 
             addToFavorite = {Config.addToFavorite}
             info = {this.state}
+            changeState = {this.changeState}
+            callRefresh = {this.callRefresh}
           />
       </section>
     )
