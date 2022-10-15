@@ -84,7 +84,6 @@ class App extends React.Component {
             addToFavorite = {Config.addToFavorite}
             info = {this.state}
             changeState = {this.changeState}
-            callRefresh = {this.callRefresh}
           />
       </section>
     )
