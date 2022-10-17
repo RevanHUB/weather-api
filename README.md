@@ -21,7 +21,7 @@
 
 ### Development 🧑‍💻 
 
-Currently there is some facts to be polished of user experience to be changed!
+Currently there is some issues to be polished about user experience!
 
 Thanks for view!
 
